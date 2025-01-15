@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>langrill central</title>
+  <title>Langrill Central</title>
   <style>
-    #langrillAnchor {
-      text-align: center;
-      margin-top: 50px;
+    body {
+      margin: 0;
+      display: flex;
+      align-items: flex-start;
+      height: 100vh;
     }
 
     #langrillHead {
@@ -16,11 +18,33 @@
       background-size: cover;
       cursor: pointer;
     }
+
+    #panel {
+      flex: 1;
+      padding: 20px;
+      background-color: #f0f0f0;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      height: 100%;
+    }
+
+    #langrillAnchor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 220px;
+      background-color: #ffffff;
+      border-right: 2px solid #ddd;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
   <div id="langrillAnchor">
     <button id="langrillHead"></button>
+  </div>
+  <div id="panel">
+    <h1>Panel Title</h1>
+    <p>Content goes here...</p>
   </div>
 </body>
 </html>
