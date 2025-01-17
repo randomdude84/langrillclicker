@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: flex-start;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Top Bar Styles */
+.topBar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 32px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  z-index: 1000; /* Ensure the top bar stays above everything */
+}
+
+.topBar a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 4px 18px;
+  text-decoration: none;
+  font-size: 16px;
+  border: 1px solid black;
+  outline-style: solid;
+  outline-color: rgb(0, 0, 0);
+  outline-width: thin;
+  background-image: url('https://cdn.jsdelivr.net/gh/randomdude84/langrillclickercdn@main/assets/img/1709oakdale.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+}
+
+.topBar a:hover {
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Section Left Styles */
+#sectionLeft {
+  width: 600px;
+  height: 100%;
+  background-color: #f0f0f0;
+  position: absolute;
+  left: 0;
+  border-right: 3px solid #333;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Section Left has a higher z-index than the canvas */
+}
+
+#backgroundLeftCanvas {
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Ensures it’s stacked correctly */
+  left: 0;
+  top: 0;
+  z-index: 5; /* Below langrillAnchor and Head, but above #MainGame */
+  background: 
+  linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(71,71,71,1) 50%, rgb(23, 41, 9) 100%),
+    url('https://cdn.jsdelivr.net/gh/randomdude84/langrillclickercdn@main/assets/img/1709oakdale.jpg') no-repeat center center;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-blend-mode:multiply;
+}
+
+/* Langrill Anchor and Head Styles */
+#langrillAnchor {
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  margin-top: 12px;
+  height: 100%;      
+  z-index: 15; /* Higher than canvas */
+  position: relative; /* Required for z-index to apply */
+}
+
+
+#langrillHead {
+  width: 380px;
+  height: 380px;
+  border: none;
+  background: url('https://cdn.jsdelivr.net/gh/randomdude84/langrillclickercdn@main/assets/img/langrillhead.png') no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  margin-top: -150px;
+  z-index: 20; /* Head specifically should be above everything else */
+  position: relative; /* Required for z-index to apply */
+  filter: drop-shadow(0 0 0.35rem rgb(128, 128, 128));
+}
+
+/* Panel Styles */
+#MainGame {
+  flex: 1;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  top: 0;
+  z-index: 0; /* Ensure it stays below the canvas */
+  position: relative; /* Required for z-index to apply */
+}
+
+#Langrills {
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  left: 0px;
+  top: 12%;
+  z-index: 200;
+  background: rgba(29, 61,65,0.4);
+  text-align: center;
+  text-shadow: 1px 0px 0px #000, -1px 0px 0px #000, 0px 1px 0px #000, 0px -1px 0px #000, 0px 1px 4px #000;;
+  font-size:25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #f0f0f0;
+}
+
+#companyAnchor {  
+  z-index: 15; /* Higher than canvas */
+  position: absolute; /* Required for z-index to apply */
+  height: 80px;
+  width: 100%;
+  top: 13%;
+  margin-top: -6%;
+}
+
+
+#companyName {
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  left: 0px;
+  top: 0%;
+  z-index: 200;
+  background: rgba(29, 61,65,0.4);
+  text-align: center;
+  text-shadow: 1px 0px 0px #000, -1px 0px 0px #000, 0px 1px 0px #000, 0px -1px 0px #000, 0px 1px 4px #000;;
+  font-size:15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #dddddd;
+  cursor: pointer;
+}
+#companyName :hover {
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#LangrillsPerSecond {
+  font-size: 13px; 
+  color: #ebebeb; 
+  margin-top: 0px; 
+  font-weight: bold;
+  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#LangrillCounter_Popup.title {
+  font-size: 18px; 
+  color: #ebebeb; 
+  font-weight: bold;
+  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+@keyframes bounce {
+  0% { 
+    transform: translateY(0) scale(1); /* Initial position and size */
+  }
+  30% { 
+    transform: translateY(-10px) scale(1.1); /* Bounce up and grow */
+  }
+  50% { 
+    transform: translateY(0) scale(1); /* Return to original size and position */
+  }
+  70% { 
+    transform: translateY(-5px) scale(1.05); /* Slight bounce and scale down */
+  }
+  100% { 
+    transform: translateY(0) scale(1); /* Back to the original position and size */
+  }
+}
+@keyframes bounce2 {
+  0% { 
+    transform: translateY(0) scale(1); /* Initial position and size */
+  }
+  30% { 
+    transform: translateY(-10px) scale(1.05); /* Bounce up and grow */
+  }
+  50% { 
+    transform: translateY(0) scale(1); /* Return to original size and position */
+  }
+  70% { 
+    transform: translateY(-5px) scale(1.05); /* Slight bounce and scale down */
+  }
+  100% { 
+    transform: translateY(0) scale(1); /* Back to the original position and size */
+  }
+}
+
+.bounce {
+  animation: bounce 0.5s ease;
+}
+.bounce2 {
+  animation: bounce 0.8s ease;
+}
+
+#bounce {
+  
+  animation: bounce 0.5s ease;
+}
+
+.not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+#versionNumber {
+  position: absolute;
+  left: 0px;
+  top: 94%;
+  z-index: 200;
+  background: rgba(29, 61, 65, 0);
+  text-align: center;
+  text-shadow: 1px 0px 0px #000, -1px 0px 0px #000, 0px 1px 0px #000, 0px -1px 0px #000, 0px 1px 4px #000;;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight:bold;
+  color: #f0f0f0;
+}
